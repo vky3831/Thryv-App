@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thryv</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="authModal" class="modal" aria-hidden="false">
+  <div class="modal-content" role="dialog" aria-labelledby="authTitle">
+    <h2 id="authTitle">Welcome to Thryv</h2>
+
+    <label for="userName">Name</label>
+    <input type="text" id="userName" autocomplete="username" placeholder="Your name">
+
+    <label for="userPass">Passkey</label>
+    <input type="password" id="userPass" autocomplete="current-password" placeholder="Choose a passkey">
+
+    <div class="modal-actions">
+      <button id="continueBtn" onclick="loginOrCreate()">Continue</button>
+    </div>
+
+    <p class="hint">First time here? Enter a name + passkey to create your profile. Afterwards use the same to login.</p>
+  </div>
+</div>
+
+<button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+
+<button id="logoutBtn" onclick="logout()" class="logout-btn" title="Logout from Thryv">Logout</button>
+
+<div id="appWrapper" class="layout hidden" aria-hidden="true">
+  <nav class="sidebar" id="sidebar" aria-label="Sidebar">
+    <h2>My Apps</h2>
+    <ul id="appList"></ul>
+  </nav>
+
+  <main class="content">
+    <div id="welcomeScreen" style="padding:40px; text-align:center;">
+      <h1>Welcome to Thryv</h1>
+      <p style="font-size:18px; margin-top:10px; color:#555;">
+        Your personal space to manage all your apps efficiently.
+      </p>
+    </div>
+
+    <iframe id="appFrame" src="" frameborder="0" title="App frame" class="hidden"></iframe>
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

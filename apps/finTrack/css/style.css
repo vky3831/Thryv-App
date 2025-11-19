@@ -1,0 +1,9 @@
+/* Simple custom styles for FinTrack */
+body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+.card { box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+.small-muted { color: #6c757d; font-size: .85rem; }
+#mainArea { min-height: 60vh; }
+.table-responsive { max-height: 60vh; overflow:auto; }
+#allPaymentsList button[data-action="markPaid"] {
+    display: none !important;
+}

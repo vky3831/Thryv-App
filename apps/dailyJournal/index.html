@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Daily Journal — VKY Soft</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Daily Journal</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMain">
+      <ul class="navbar-nav ms-auto d-flex gap-2 flex-wrap">
+        <li class="nav-item"><a class="nav-link text-danger" href="#" id="btnDeleteProfile">Delete Profile</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" id="btnExport">Export JSON</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" id="btnImport">Import JSON</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" id="btnLogout">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="row mb-3">
+    <div class="col-12 col-md-4">
+      <label for="entryDate" class="form-label">Date</label>
+      <input type="date" id="entryDate" class="form-control">
+    </div>
+    <div class="col-12 col-md-8 d-flex align-items-end justify-content-end">
+      <button class="btn btn-success me-2" id="btnSave">Save Entry</button>
+      <button class="btn btn-outline-secondary" id="btnClear">Clear</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-lg-6 mb-3">
+      <label for="entryContent" class="form-label">Your entry</label>
+      <textarea id="entryContent" rows="12" class="form-control" placeholder="Write about your day..."></textarea>
+    </div>
+
+    <div class="col-12 col-lg-6">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h5 class="mb-0">Previous entries</h5>
+        <small id="userGreeting" class="text-muted"></small>
+      </div>
+      <div id="entriesList" class="accordion"></div>
+    </div>
+  </div>
+
+  <footer class="text-center mt-4">
+    <small>&copy; VKY Soft</small>
+  </footer>
+
+  <input type="file" id="importFile" accept="application/json" style="display:none">
+</div>
+
+<div class="modal fade" id="authModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header"><h5 class="modal-title" id="authTitle"></h5></div>
+      <div class="modal-body">
+        <div id="firstTimeFields">
+          <label class="form-label">Your name</label>
+          <input id="userNameInput" class="form-control mb-3" />
+        </div>
+
+        <label class="form-label">Passkey</label>
+        <input id="passkeyInput" type="password" class="form-control" />
+        <div class="form-text">Passkey is stored only in your browser.</div>
+
+        <div id="authError" class="text-danger small mt-2" style="display:none"></div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-primary" id="authSubmit">Continue</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="js/db.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/entries.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

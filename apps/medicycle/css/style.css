@@ -1,0 +1,13 @@
+:root { --bg: #ffffff; --text: #111827; --card: #f8fafc; }
+.dark { --bg: #0b1220; --text: #e6eef8; --card: #0f1724; }
+body { background: var(--bg); color: var(--text); }
+.card { background: var(--card); }
+.app-shell { min-height: 100vh; display:flex; flex-direction:column; }
+.logo { font-weight:700; letter-spacing:0.6px; }
+.small-muted { font-size:0.85rem; color:rgba(0,0,0,0.55); }
+.time-pill { font-weight:600; }
+.cursor-pointer { cursor:pointer; }
+@media (max-width:576px){ .desktop-only{ display:none } }
+
+/* Dark-mode tweaks */
+:root.dark .small-muted { color: rgba(255,255,255,0.6); }

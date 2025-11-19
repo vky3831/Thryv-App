@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FinTrack — Personal Finance Tracker</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" href="#">FinTrack</a>
+    <div class="d-flex">
+      <span class="navbar-text text-white me-3" id="currentProfileName"></span>
+      <button class="btn btn-outline-light btn-sm" id="logoutBtn" style="display:none">Logout</button>
+    </div>
+  </div>
+</nav>
+
+<main class="container my-4" id="mainArea">
+  <!-- Content injected by app.js -->
+</main>
+
+<footer class="text-center py-3">
+  <small>&copy; VKY Soft</small>
+</footer>
+
+<!-- Modals -->
+<!-- Login modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" 
+     data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content">
+      <form id="loginForm">
+        <div class="modal-header">
+          <h5 class="modal-title">Enter Passkey</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="passkeyInput" class="form-label">Passkey</label>
+            <input type="password" id="passkeyInput" class="form-control" required minlength="4">
+          </div>
+          <div id="loginError" class="text-danger small" style="display:none"></div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Cancel</button>
+          <button class="btn btn-primary" type="submit">Open</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Add/Edit Payment modal -->
+<div class="modal fade" id="paymentModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="paymentForm">
+        <div class="modal-header">
+          <h5 class="modal-title" id="paymentModalTitle">Add Payment</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="paymentId">
+          <div class="mb-3">
+            <label class="form-label">Title</label>
+            <input id="pTitle" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Type</label>
+            <select id="pType" class="form-select">
+              <option>Subscription</option>
+              <option>EMI</option>
+              <option>LIC</option>
+              <option>Health</option>
+              <option>Custom</option>
+            </select>
+            <input id="pTypeCustom" class="form-control mt-2" placeholder="Custom type" style="display:none">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Cycle</label>
+            <select id="pCycle" class="form-select" required>
+              <option value="monthly">Monthly</option>
+              <option value="weekly">Weekly</option>
+              <option value="half-yearly">Half yearly</option>
+              <option value="quarterly">Quarterly</option>
+              <option value="yearly">Yearly</option>
+              <option value="once">Once</option>
+            </select>
+          </div>
+          <div class="mb-3" id="pDateContainer">
+            <label class="form-label" id="pDateLabel">Date</label>
+            <input id="pDate" class="form-control" placeholder="DD/MM or DD/MM/YYYY">
+            <div class="form-text">For monthly enter day (e.g. 05). For weekly enter weekday name (e.g. Monday). For once enter full date DD/MM/YYYY.</div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Notes (optional)</label>
+            <textarea id="pNotes" class="form-control" rows="2"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Cancel</button>
+          <button class="btn btn-primary" type="submit">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Mark Paid modal -->
+<div class="modal fade" id="paidModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <form id="paidForm">
+        <div class="modal-header">
+          <h5 class="modal-title">Mark as Paid</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="paidPaymentId">
+          <div class="mb-3">
+            <label class="form-label">Remarks</label>
+            <textarea id="paidRemarks" class="form-control" rows="2"></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Date</label>
+            <input id="paidDate" class="form-control" type="date" value="">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Cancel</button>
+          <button class="btn btn-success" type="submit">Mark Paid</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/db.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/payments.js"></script>
+<script src="js/exportImport.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
