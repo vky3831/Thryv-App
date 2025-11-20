@@ -28,12 +28,14 @@
 
 <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
 
-<button id="logoutBtn" onclick="logout()" class="logout-btn" title="Logout from Thryv">Logout</button>
+<!-- <button id="logoutBtn" onclick="logout()" class="logout-btn" title="Logout from Thryv">Logout</button> -->
 
 <div id="appWrapper" class="layout hidden" aria-hidden="true">
   <nav class="sidebar" id="sidebar" aria-label="Sidebar">
-    <h2>My Apps</h2>
+    <h2>My Apps </h2>
     <ul id="appList"></ul>
+    <ul><button id="logoutBtn" onclick="logout()" class="logout-btn" title="Logout from Thryv">Logout</button></ul>
+    <ul></ul><button id="deleteBtn" onclick="deleteProfile()" class="delete-btn">Delete Profile</button></ul>
   </nav>
 
   <main class="content">

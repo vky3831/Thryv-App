@@ -1,0 +1,5 @@
+
+/* Simple styles for HealthScale */
+body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+#profilesList .card { cursor: pointer; }
+.small-note { font-size: .85rem; color: #666; }

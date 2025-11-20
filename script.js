@@ -52,7 +52,7 @@ function showApp(){
 
   document.getElementById("authModal").style.display = "none";
   document.getElementById("appWrapper").classList.remove("hidden");
-  document.getElementById("logoutBtn").style.display = "none";
+  document.getElementById("logoutBtn").style.display = "block";
   document.getElementById("authModal").setAttribute("aria-hidden","true");
   document.getElementById("appWrapper").setAttribute("aria-hidden","false");
 }
@@ -122,6 +122,34 @@ function logout(){
 }
 
 
+function deleteProfile(){
+  if(!confirm("Delete entire profile and all associated data? This cannot be undone.")) return;
+
+  const userId = currentUser.id;
+
+  // delete profile
+  let tx1 = db.transaction("profiles", "readwrite");
+  tx1.objectStore("profiles").delete(userId);
+
+  // delete all entries of this user
+  let tx2 = db.transaction("entries", "readwrite");
+  let store = tx2.objectStore("entries");
+
+  store.openCursor().onsuccess = function(e){
+    const cursor = e.target.result;
+    if(cursor){
+      if(cursor.value.userId === userId) cursor.delete();
+      cursor.continue();
+    }
+  };
+
+  alert("Profile deleted successfully.");
+
+  sessionStorage.removeItem("loggedIn");
+  location.reload();
+}
+
+
 // ------------------------------
 // Your Existing App Loader
 // ------------------------------
@@ -129,6 +157,7 @@ const apps=[
   {id:"medicycle",name:"MediCycle",path:"apps/medicycle/index.html"},
   {id:"finTrack",name:"FinTrack",path:"apps/finTrack/index.html"},
   {id:"dailyJournal",name:"DailyJournal",path:"apps/dailyJournal/index.html"},
+  {id:"healthScale",name:"HealthScale",path:"apps/healthScale/index.html"}
 ];
 
 function renderAppList(){
